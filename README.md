@@ -1,19 +1,6 @@
-# Go Web Application
+# End to End CI-CD Implementation of DevOps on a Go-lang web application
 
-This is a simple website written in Golang. It uses the `net/http` package to serve HTTP requests.
+<img width="645" height="955" alt="Screenshot 2025-09-22 at 12 06 16 PM" src="https://github.com/user-attachments/assets/dd9d53e1-d897-4c5d-aba5-3b300e2b55dd" />
 
-## Running the server
-
-To run the server, execute the following command:
-
-```bash
-go run main.go
-```
-
-The server will start on port 8080. You can access it by navigating to `http://localhost:8080/courses` in your web browser.
-
-## Looks like this
-
-![Website](static/images/golang-website.png)
-
+In this Tutorial, we will implement End to End Implementation of DevOps on a Go-lang web application. We will implement the following things:
 
