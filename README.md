@@ -215,30 +215,6 @@ And update the depluyment.yaml file with below variable. This will help develope
 
 Update values.yaml by replacing code from below:
 
-# Default values for go-web-app-chart.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-
-image:
-  repository: abdurakhimovda522/go-web-app #replace with your image
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1"
-
-ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-
 <img width="677" height="455" alt="Screenshot 2025-09-21 at 4 39 09 PM" src="https://github.com/user-attachments/assets/5ce887e4-870b-4510-b77c-34e2cfa09928" />
 
 Do not forgot to update repository name.
