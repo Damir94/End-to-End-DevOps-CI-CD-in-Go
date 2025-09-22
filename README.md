@@ -28,50 +28,50 @@ Let’s Get Started !!
 
   - *go run main.go*
 
-<img width="794" height="72" alt="Screenshot 2025-09-21 at 2 28 32 PM" src="https://github.com/user-attachments/assets/e6d1a4ee-c3dd-4aef-9e85-697b7fd3525d" />
+ <img width="794" height="72" alt="Screenshot 2025-09-21 at 2 28 32 PM" src="https://github.com/user-attachments/assets/e6d1a4ee-c3dd-4aef-9e85-697b7fd3525d" />
 
 Now you can access your application on below URL:
  - *URL : http://localhost:8080/courses*
 
-<img width="1131" height="795" alt="Screenshot 2025-09-21 at 2 29 02 PM" src="https://github.com/user-attachments/assets/19f36e5a-9034-4e94-8255-a7af14f26a1f" />
+ <img width="1131" height="795" alt="Screenshot 2025-09-21 at 2 29 02 PM" src="https://github.com/user-attachments/assets/19f36e5a-9034-4e94-8255-a7af14f26a1f" />
 
 2. Now we need to write Docker file, and we are going to make multistage docker file for reducing image size and make sure, you have installed Docker desktop application inside your windows system.
 So, you can find Docker file inside repository. So basically, what we are doing in this docker file that we are building the code binary in above step and copy that binary file of code and executing that inside distroless image which has no dependencies installed. This help to reduce dockerimage file size & provide high level of security.
 
-<img width="920" height="435" alt="Screenshot 2025-09-21 at 2 33 30 PM" src="https://github.com/user-attachments/assets/7a3658f7-0179-4731-9e19-8921b4e3454c" />
+ <img width="920" height="435" alt="Screenshot 2025-09-21 at 2 33 30 PM" src="https://github.com/user-attachments/assets/7a3658f7-0179-4731-9e19-8921b4e3454c" />
 
 Run below commnad to build image:
 - *docker build -t abdurakhimovda522/go-web-app .*
 
-<img width="1193" height="345" alt="Screenshot 2025-09-21 at 2 50 06 PM" src="https://github.com/user-attachments/assets/d2368c71-b04b-4b62-b946-a123476c82c4" />
+ <img width="1193" height="345" alt="Screenshot 2025-09-21 at 2 50 06 PM" src="https://github.com/user-attachments/assets/d2368c71-b04b-4b62-b946-a123476c82c4" />
 
 You can see your image, inside Docker desktop.
 
-<img width="1262" height="444" alt="Screenshot 2025-09-21 at 2 50 31 PM" src="https://github.com/user-attachments/assets/73f61f18-2dc2-4ddb-bef3-539484f36e6c" />
+ <img width="1262" height="444" alt="Screenshot 2025-09-21 at 2 50 31 PM" src="https://github.com/user-attachments/assets/73f61f18-2dc2-4ddb-bef3-539484f36e6c" />
 
 Run below command to run container and make sure make container name as per your dockerhub username as we will push that image to dockerhub.
  - *docker run -p 8080:8080 -dit abdurakhimovda522/go-web-app*
 
-<img width="1208" height="78" alt="Screenshot 2025-09-21 at 2 51 57 PM" src="https://github.com/user-attachments/assets/95637e30-8f25-4cf7-95b8-3bf4794e4fc1" />
+ <img width="1208" height="78" alt="Screenshot 2025-09-21 at 2 51 57 PM" src="https://github.com/user-attachments/assets/95637e30-8f25-4cf7-95b8-3bf4794e4fc1" />
 
 You can check your container running inside docker desktop.
 
-<img width="1261" height="464" alt="Screenshot 2025-09-21 at 2 52 37 PM" src="https://github.com/user-attachments/assets/bd765786-f0c2-49dc-84a8-cd625e668d94" />
+ <img width="1261" height="464" alt="Screenshot 2025-09-21 at 2 52 37 PM" src="https://github.com/user-attachments/assets/bd765786-f0c2-49dc-84a8-cd625e668d94" />
 
 Now you need to login inside your docker hub to push image:
  - *docker login*
 
-<img width="864" height="167" alt="Screenshot 2025-09-21 at 2 53 27 PM" src="https://github.com/user-attachments/assets/ac3d9d19-d706-425f-ab5b-64c2ccde7dee" />
+ <img width="864" height="167" alt="Screenshot 2025-09-21 at 2 53 27 PM" src="https://github.com/user-attachments/assets/ac3d9d19-d706-425f-ab5b-64c2ccde7dee" />
 
 Now run
  - *docker push "imagename"*
 This will push image to dockerhub.
 
-<img width="1082" height="384" alt="Screenshot 2025-09-21 at 2 54 31 PM" src="https://github.com/user-attachments/assets/883959d1-ce6d-4f7d-bd10-a385a18ad25a" />
+ <img width="1082" height="384" alt="Screenshot 2025-09-21 at 2 54 31 PM" src="https://github.com/user-attachments/assets/883959d1-ce6d-4f7d-bd10-a385a18ad25a" />
 
 You can check your image on your docker hub.
 
-<img width="1901" height="745" alt="Screenshot 2025-09-21 at 2 55 19 PM" src="https://github.com/user-attachments/assets/c9c3f5d5-d138-44cd-9dae-0f2c5668b9db" />
+ <img width="1901" height="745" alt="Screenshot 2025-09-21 at 2 55 19 PM" src="https://github.com/user-attachments/assets/c9c3f5d5-d138-44cd-9dae-0f2c5668b9db" />
 
 3. So let’s create Kubernetes manifest file for deployment.
    Create “k8s” folder and inside that create “manifests” folder. Inside those create three manifests file name : deployment.yaml, ingress.yaml, service.yaml
