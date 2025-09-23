@@ -301,6 +301,9 @@ Copy your key by allowing all permission inside Token secrets.
 
 Now when you will push this code, workflow that you have write in .github folder will start CI pipeline and build our docker image with new tag and push that image to dockerhub.
 
+<img width="1903" height="813" alt="Screenshot 2025-09-23 at 10 22 10 AM" src="https://github.com/user-attachments/assets/0c409de9-481f-47b7-b568-68ea3a912b06" />
+
+
 <img width="936" height="315" alt="Screenshot 2025-09-23 at 7 48 48 AM" src="https://github.com/user-attachments/assets/238c603c-bb37-42d9-bf52-cbc2096ccf44" />
 
 You can verify this here on Dockerhub.
