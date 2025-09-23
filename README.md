@@ -302,3 +302,39 @@ Now when you will push this code, workflow that you have write in .github folder
 You can verify this here on Dockerhub.
 
 7. Now as CI part is done, so let’s start CD part with help of ArgoCD. As for ArgoCD , the only source of truth is github so that’s why we use github action for CI part.
+
+Run below command into your local terminal, to create namespace for argocd :
+
+ - *kubectl create namespace argocd*
+
+<img width="895" height="78" alt="Screenshot 2025-09-23 at 10 23 33 AM" src="https://github.com/user-attachments/assets/578daba3-3252-4471-9f63-743355b0b5ce" />
+
+Run this command for install argocd or create pod of argocd:
+ - *kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml*
+
+<img width="1243" height="222" alt="Screenshot 2025-09-23 at 10 24 11 AM" src="https://github.com/user-attachments/assets/c8d84eab-49dc-42cb-90bb-96b079304b32" />
+
+Run this command to edit service file of argocd and change ClusterIP to Loadbalanacer so it will take loadbalancer ip.
+ - *kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"*
+   
+<img width="1236" height="79" alt="Screenshot 2025-09-23 at 10 24 58 AM" src="https://github.com/user-attachments/assets/50a7e557-f4eb-40ed-b283-760a421005b7" />
+
+Now run below command to get ip of argocd pod :
+ - *kubectl get svc argocd-server -n argocd*
+
+<img width="1239" height="135" alt="Screenshot 2025-09-23 at 10 25 26 AM" src="https://github.com/user-attachments/assets/fc0d08ef-6025-4a2f-8d41-d5135ee3cb82" />
+
+Paste that ExternalIP inside your browser , and it will open argocd UI.
+
+<img width="1149" height="912" alt="Screenshot 2025-09-23 at 10 26 14 AM" src="https://github.com/user-attachments/assets/71fd1e32-ef85-4e28-8c6f-1ce9a93ed083" />
+
+So, as username is fixed as Admin, you need password, for that run below command :
+ - *kubectl get secrets -n argocd*
+
+<img width="916" height="136" alt="Screenshot 2025-09-23 at 10 26 38 AM" src="https://github.com/user-attachments/assets/148f7cf6-de40-4a30-aecd-40ceeed2e907" />
+
+Run below command for getting password :
+ - *kubectl edit secrets argocd-initial-admin-secret -n argocd*
+
+<img width="1158" height="83" alt="Screenshot 2025-09-23 at 10 27 27 AM" src="https://github.com/user-attachments/assets/ab64e8c6-4244-49ef-b35f-f6a86e05f17a" />
+
