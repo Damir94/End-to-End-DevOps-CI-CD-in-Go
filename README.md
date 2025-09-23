@@ -342,3 +342,57 @@ Run below command for getting password :
 
 <img width="1158" height="83" alt="Screenshot 2025-09-23 at 10 27 27 AM" src="https://github.com/user-attachments/assets/ab64e8c6-4244-49ef-b35f-f6a86e05f17a" />
 
+Copy the password and decrypt that code as it is in base64 format. For decode that, run below command :
+ - *echo Ung4eFh1Nk05T1RRUUstYg== | base64 --decode*
+
+<img width="928" height="342" alt="Screenshot 2025-09-23 at 11 25 55 AM" src="https://github.com/user-attachments/assets/31547692-acbb-4a0f-8164-2cf1dcb6db25" />
+
+<img width="1145" height="90" alt="Screenshot 2025-09-23 at 10 28 01 AM" src="https://github.com/user-attachments/assets/95f2f2b6-5c19-4692-863f-dd92fa3d2c97" />
+
+Copy the password before the base64 only.
+Copy paste that password inside ArgoCD, it will open such UI :
+
+<img width="1153" height="603" alt="Screenshot 2025-09-23 at 10 28 34 AM" src="https://github.com/user-attachments/assets/7c09d628-67ac-45ad-be26-219ddea113ea" />
+
+Click on New App.
+
+ - Give Application name : go-web-app { you can give whatever you want }
+ - Select project name > default
+ - Select SYNC POLICY > self-heal
+
+<img width="908" height="513" alt="Screenshot 2025-09-23 at 10 29 30 AM" src="https://github.com/user-attachments/assets/02885138-2ec8-41d8-bc89-22a471e6d9df" />
+
+Now come to SOURCE > give your repository URL, it will detect automatically helm chart.
+
+<img width="910" height="516" alt="Screenshot 2025-09-23 at 10 30 37 AM" src="https://github.com/user-attachments/assets/5ca81a64-acdd-477b-8aa4-347b2f42e3ba" />
+
+In path section > select default cluster url and in Namespace , write default.
+
+<img width="873" height="269" alt="Screenshot 2025-09-23 at 10 31 12 AM" src="https://github.com/user-attachments/assets/61ec7688-e1ac-4417-bb87-378f47756294" />
+
+Before this, you can check that, there is no deployment and svc is running right now.
+
+ - *kubectl get all*
+
+<img width="787" height="100" alt="Screenshot 2025-09-23 at 10 31 35 AM" src="https://github.com/user-attachments/assets/0414e5b1-99ba-4fe9-90d7-f8acba0901c1" />
+
+In HELM, select values.yaml file and then click on create.
+
+<img width="881" height="322" alt="Screenshot 2025-09-23 at 10 32 18 AM" src="https://github.com/user-attachments/assets/743d824a-1c7a-4a7a-bad8-bd6219924c24" />
+
+After click on create , it will sysnc application and tell you the status. If everthing is good, you will see status as Healthy and Synced.
+
+<img width="1068" height="546" alt="Screenshot 2025-09-23 at 10 34 00 AM" src="https://github.com/user-attachments/assets/377f72bb-bdfe-48ec-9740-4da15e343345" />
+
+<img width="1903" height="628" alt="Screenshot 2025-09-23 at 10 34 14 AM" src="https://github.com/user-attachments/assets/86228f0f-a83b-49e0-a20c-6910fd188d4e" />
+
+That’s it. You have successfully devopsified a go language-based web-app.
+
+Now whenever you update your github repo, whole CI-CD will run on github action and argocd.
+
+For destroying all resources , run below command :
+
+ - *eksctl delete cluster --name demo-cluster --region us-east-1*
+
+<img width="1237" height="191" alt="Screenshot 2025-09-23 at 10 35 26 AM" src="https://github.com/user-attachments/assets/f8d0faff-a23b-4cc7-9d19-0e1a5ea98970" />
+
