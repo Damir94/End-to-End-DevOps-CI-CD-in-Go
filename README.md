@@ -208,6 +208,10 @@ Go to that directory by below command and remove all unnecessary folders.
 <img width="976" height="113" alt="Screenshot 2025-09-21 at 4 29 37 PM" src="https://github.com/user-attachments/assets/0384a998-252f-4a4a-99d1-4e9edefc4a40" />
 
 Now copy all three deployment.yaml , service.yaml and ingress.yaml files into template folder and delete everthing which was there previously.
+
+<img width="676" height="75" alt="Screenshot 2025-09-21 at 4 33 56 PM" src="https://github.com/user-attachments/assets/23a3408e-38f6-487d-a8e0-126f340cbab6" />
+
+
 And update the depluyment.yaml file with below variable. This will help developer or devops engineer to update whole docker image version just by writing in helm chart.
  - *abdurakhimov522/go-web-app:{{ .Values.image.tag }}*
 
