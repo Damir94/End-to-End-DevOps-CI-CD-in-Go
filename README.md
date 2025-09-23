@@ -1,7 +1,5 @@
 # End to End CI-CD Implementation of DevOps on a Go-lang web application
 
-<img width="645" height="955" alt="Screenshot 2025-09-22 at 12 06 16 PM" src="https://github.com/user-attachments/assets/dd9d53e1-d897-4c5d-aba5-3b300e2b55dd" />
-
 In this Tutorial, we will implement End to End Implementation of DevOps on a Go-lang web application. We will implement the following things:
  - *Designed and implemented* a fully automated, end-to-end *CI/CD pipeline,* enabling seamless and faster deployment of application updates with minimal manual intervention.
  - *Containerized* the web application using a *multi-stage Docker build* to optimize and significantly reduce the container image size, improving efficiency in the CI pipeline.
@@ -11,6 +9,8 @@ In this Tutorial, we will implement End to End Implementation of DevOps on a Go-
  - Configured and deployed an *NGINX Ingress controller* to expose services and applications securely and efficiently, ensuring high availability and controlled access.
  - Orchestrated *DNS mapping* for the custom domain, ensuring smooth routing and accessibility to the deployed services.
  - Implemented *version tagging* and deployment tracking for continuous version control and traceability of releases across environments.
+
+<img width="645" height="955" alt="Screenshot 2025-09-22 at 12 06 16 PM" src="https://github.com/user-attachments/assets/dd9d53e1-d897-4c5d-aba5-3b300e2b55dd" />
 
 Let’s Get Started !! 
 
