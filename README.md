@@ -10,7 +10,8 @@
  - Orchestrated *DNS mapping* for the custom domain, ensuring smooth routing and accessibility to the deployed services.
  - Implemented *version tagging* and deployment tracking for continuous version control and traceability of releases across environments.
 
-<img width="645" height="955" alt="Screenshot 2025-09-22 at 12 06 16 PM" src="https://github.com/user-attachments/assets/dd9d53e1-d897-4c5d-aba5-3b300e2b55dd" />
+<img width="817" height="501" alt="Screenshot 2025-09-23 at 1 55 26 PM" src="https://github.com/user-attachments/assets/1e0ac17f-4f7b-442a-8212-d9bfe259fb73" />
+
 
 Let’s Get Started !! 
 
