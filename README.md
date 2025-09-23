@@ -1,6 +1,6 @@
 # End to End CI-CD Implementation of DevOps on a Go-lang web application
 
-In this Tutorial, we will implement End to End Implementation of DevOps on a Go-lang web application. We will implement the following things:
+ We will implement End to End Implementation of DevOps on a Go-lang web application. We will implement the following things:
  - *Designed and implemented* a fully automated, end-to-end *CI/CD pipeline,* enabling seamless and faster deployment of application updates with minimal manual intervention.
  - *Containerized* the web application using a *multi-stage Docker build* to optimize and significantly reduce the container image size, improving efficiency in the CI pipeline.
  - *Created and managed Helm charts* to facilitate *Kubernetes* deployment across multiple environments within *AWS EKS,* ensuring scalable and consistent releases.
