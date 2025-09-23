@@ -304,7 +304,8 @@ Now when you will push this code, workflow that you have write in .github folder
 <img width="1903" height="813" alt="Screenshot 2025-09-23 at 10 22 10 AM" src="https://github.com/user-attachments/assets/0c409de9-481f-47b7-b568-68ea3a912b06" />
 
 
-<img width="936" height="315" alt="Screenshot 2025-09-23 at 7 48 48 AM" src="https://github.com/user-attachments/assets/238c603c-bb37-42d9-bf52-cbc2096ccf44" />
+<img width="904" height="180" alt="Screenshot 2025-09-23 at 10 23 08 AM" src="https://github.com/user-attachments/assets/63ba86ac-c3de-4985-9f4b-86534bf51514" />
+
 
 You can verify this here on Dockerhub.
 
