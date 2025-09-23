@@ -223,6 +223,82 @@ Now if you run below command, you will see your app, service, ingress.
    
  <img width="784" height="276" alt="Screenshot 2025-09-21 at 4 41 46 PM" src="https://github.com/user-attachments/assets/535855cf-17de-4f95-a6ff-0b167dcf6fdd" />
 
+5. So, let’s delete everything and deploy through helm chart.
 
+   - *kubectl delete deploy go-web-app*
 
+<img width="846" height="124" alt="Screenshot 2025-09-21 at 4 42 19 PM" src="https://github.com/user-attachments/assets/8d8ecfd6-33e2-43a2-8eba-bb6e15999bbe" />
 
+Run below command to delete service.
+
+ - *kubectl delete svc go-web-app*
+
+<img width="792" height="88" alt="Screenshot 2025-09-21 at 4 42 39 PM" src="https://github.com/user-attachments/assets/f60e9e38-7dc5-45b3-9f80-3aee45327345" />
+
+Run below command to delete ingress.
+
+ - *kubectl delete ing go-web-app*
+   
+<img width="770" height="83" alt="Screenshot 2025-09-21 at 4 42 53 PM" src="https://github.com/user-attachments/assets/76cfabf9-7e33-448c-982d-a28d04b7c390" />
+
+Now after this, if you will run below command, you will see nothing.
+ - *kubectl get all*
+
+<img width="690" height="85" alt="Screenshot 2025-09-21 at 4 43 12 PM" src="https://github.com/user-attachments/assets/1f9b2a90-4d3f-4bed-99e3-0008952d7440" />
+
+Now we will install these from heml chart using below command:
+ - *helm install go-web-app ./go-web-app-chart*
+   
+<img width="977" height="160" alt="Screenshot 2025-09-21 at 4 44 05 PM" src="https://github.com/user-attachments/assets/3b0ae6b0-c61e-4cba-8a34-9fc0d5ea9fcb" />
+
+This will deploy my app, service and ingress. You can check by running below commands:
+ - *kubectl get deployment*
+ - *kubectl get svc*
+ - *kubectl get ing*
+
+<img width="1218" height="224" alt="Screenshot 2025-09-21 at 4 44 49 PM" src="https://github.com/user-attachments/assets/1c51c14b-8847-4d49-8ced-a087151ce4bc" />
+
+You can cross check, by going to go-web-app file from below command:
+ - *kubectl edit deploy go-web-app*
+
+<img width="454" height="160" alt="Screenshot 2025-09-21 at 4 45 51 PM" src="https://github.com/user-attachments/assets/b0a2c1af-ac35-4d0b-8b5b-b8d66f0133bd" />
+
+Now un-install everything and now we will create a proper CI-CD part of project so for uninstalling everything, run below command and verify.
+ - *helm uninstall go-web-app*
+ - *kubectl get all*
+   
+<img width="843" height="119" alt="Screenshot 2025-09-21 at 4 46 39 PM" src="https://github.com/user-attachments/assets/410e2003-193d-4694-92ae-abb329463e36" />
+
+6. Now, first we will create CI part of our deployment on Github Action:
+Create a .github folder and inside that create workflows folder and inside that, create ci.yaml file for CI part. You can find in repo that you clone above. Whenever you push the code this yaml code will run and create a pipeline and build our application and push new docker image inside dockerhub with new version tag.
+
+<img width="846" height="616" alt="Screenshot 2025-09-23 at 7 43 12 AM" src="https://github.com/user-attachments/assets/91f76eab-4b3f-4048-92ea-0318f7cf47b3" />
+
+Now create a repository inside your GitHub with any name you want and go to Settings > Secrets and variables > click on new repository secret.
+
+Now here you need to create three secrets, as DOCKERHUB_TOKEN, DOCKERHUB_USERNAME, TOKEN.
+
+<img width="1415" height="354" alt="Screenshot 2025-09-23 at 7 45 14 AM" src="https://github.com/user-attachments/assets/25b33f7a-89c1-46e1-b78b-be2af0ca1aa1" />
+
+In DOCKERHUB_TOKEN = your dockerhub password
+
+DOCKERHUB_USERNAME = your dockerhub username
+
+For token, you need to provide GitHub Api as your code need to run in GitHub runner, so it needs access of your repository.
+
+go to profile > settings > developer settings.
+
+<img width="344" height="570" alt="Screenshot 2025-09-23 at 7 46 18 AM" src="https://github.com/user-attachments/assets/4e68923a-6440-46e3-9157-942ff7c0cd86" />
+
+Click on Tokens classic and click on generate new token
+Copy your key by allowing all permission inside Token secrets.
+
+<img width="1298" height="419" alt="Screenshot 2025-09-23 at 7 47 12 AM" src="https://github.com/user-attachments/assets/12c38d9a-da4f-4e67-923c-945886888f98" />
+
+Now when you will push this code, workflow that you have write in .github folder will start CI pipeline and build our docker image with new tag and push that image to dockerhub.
+
+<img width="936" height="315" alt="Screenshot 2025-09-23 at 7 48 48 AM" src="https://github.com/user-attachments/assets/238c603c-bb37-42d9-bf52-cbc2096ccf44" />
+
+You can verify this here on Dockerhub.
+
+7. Now as CI part is done, so let’s start CD part with help of ArgoCD. As for ArgoCD , the only source of truth is github so that’s why we use github action for CI part.
