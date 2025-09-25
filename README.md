@@ -17,17 +17,17 @@ Let’s Get Started !!
 
 1. Let’s copy first GitHub repository from below url:
    ```bash
-   git clone https://github.com/Damir94/End-to-End-DevOps-CI-CD-in-Go*
-   cd End-to-End-DevOps-CI-CD-in-Go*
+   git clone https://github.com/Damir94/End-to-End-DevOps-CI-CD-in-Go
+   cd End-to-End-DevOps-CI-CD-in-Go
 
   We will first run the go web app into local system, that is it running proper or not to get idea that, what exactly we need write in Docker file to run go web app.
   To build your go-web-app , run below command, it will download all dependencies to run go web-app.
 
-   - *go build -o main .*
+    go build -o main .
 
   Now run below command to run your go web-app.
 
-  - *go run main.go*
+    go run main.go
 
  <img width="794" height="72" alt="Screenshot 2025-09-21 at 2 28 32 PM" src="https://github.com/user-attachments/assets/e6d1a4ee-c3dd-4aef-9e85-697b7fd3525d" />
 
