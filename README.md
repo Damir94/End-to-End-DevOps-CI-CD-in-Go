@@ -68,7 +68,9 @@ docker login
  <img width="864" height="167" alt="Screenshot 2025-09-21 at 2 53 27 PM" src="https://github.com/user-attachments/assets/ac3d9d19-d706-425f-ab5b-64c2ccde7dee" />
 
 Now run
- - *docker push "imagename"*
+```bash
+docker push "imagename"
+```
 This will push image to dockerhub.
 
  <img width="1082" height="384" alt="Screenshot 2025-09-21 at 2 54 31 PM" src="https://github.com/user-attachments/assets/883959d1-ce6d-4f7d-bd10-a385a18ad25a" />
@@ -88,17 +90,18 @@ You can check your image on your docker hub.
 <img width="720" height="382" alt="Screenshot 2025-09-21 at 3 13 59 PM" src="https://github.com/user-attachments/assets/82ca0a95-0ed1-4866-baeb-fc581adb78b7" />
 
 That’s it. Now to run this on your local system, you need to install “kubectl” command inside your cmd terminal. Run below commnad to install:
- - *winget install -e --id Kubernetes.kubectl*
-   
+```bash
+   winget install -e --id Kubernetes.kubectl
+```
  Now we have successfully installed kubectl, we need to install eksctl command to create cluster and making .konfig file to create inside system.
 
  you can download eksctl from here: https://eksctl.io/installation/
 
  Now after downloading, add that file into your system environment path to access any where in terminal.
  After that, run below command to create eks cluster. Remember you must have configured your system through “ AWS CLI “ command to authorize system.
-
- - *eksctl create cluster --name demo-cluster --region us-east-1*
-
+```bash
+eksctl create cluster --name demo-cluster --region us-east-1
+```
 <img width="716" height="138" alt="Screenshot 2025-09-21 at 3 17 15 PM" src="https://github.com/user-attachments/assets/d4f598b9-7fab-4584-82ca-4fd9feff758c" />
 
 <img width="1190" height="533" alt="Screenshot 2025-09-21 at 3 28 54 PM" src="https://github.com/user-attachments/assets/19854cfd-4def-42f8-a522-6313da0215d5" />
@@ -107,33 +110,39 @@ That’s it. Now to run this on your local system, you need to install “kubect
 
 This will create a eks cluster inside your aws account, this process is going to take around 10–15 minutes.
 Now run below commnad to deploy go-lang based web-app through kubernetes.
- - *kubectl apply -f k8s\manifests\deplyment.yaml*
-
+```bash
+kubectl apply -f k8s\manifests\deplyment.yaml
+```
 <img width="1055" height="74" alt="Screenshot 2025-09-21 at 3 44 38 PM" src="https://github.com/user-attachments/assets/9470406c-98fc-44b1-97c5-9f30910c8a46" />
 
 When you run this command, this will tell you all running pods in which your container is running.
- - *kubectl get pods*
-   
+```bash
+kubectl get pods
+```
 <img width="784" height="95" alt="Screenshot 2025-09-21 at 3 44 59 PM" src="https://github.com/user-attachments/assets/36f61450-78bb-49c9-ab23-796d5b0ab5e8" />
 
 Now run below command to run service file through kubernetes.
- - *kubectl apply -f k8s\manifests\service.yaml*
-
+```bash
+kubectl apply -f k8s\manifests\service.yaml
+```
 <img width="1023" height="174" alt="Screenshot 2025-09-21 at 3 46 08 PM" src="https://github.com/user-attachments/assets/4289bbfb-a039-40c7-9c15-8a16855d0ace" />
 
 And this command will run ingress file:
- - *kubectl apply -f k8s\manifests\ingress.yaml*
-   
+```bash
+kubectl apply -f k8s\manifests\ingress.yaml
+```
 <img width="1023" height="140" alt="Screenshot 2025-09-21 at 3 46 50 PM" src="https://github.com/user-attachments/assets/6143119a-92dd-4091-b789-c3485b7b16ff" />
 
 Now you can check on which port or address your application is running but till now you won’t be able to found address as we have not installed ingress controller.
- - *kubectl get ing*
-
+```bash
+kubectl get ing
+```
 <img width="1023" height="140" alt="Screenshot 2025-09-21 at 3 46 50 PM" src="https://github.com/user-attachments/assets/cb74bece-9b1b-4c38-9b5e-c6a3f63f8ccc" />
 
 Run below command to get ip for ingress:
- - *kubectl edit svc go-web-app*
-
+```bash
+kubectl edit svc go-web-app
+```
 <img width="853" height="48" alt="Screenshot 2025-09-21 at 3 48 44 PM" src="https://github.com/user-attachments/assets/389540c8-4780-4e78-a0ec-b1afc4f75c38" />
 
 And change the type from: ClusterIP >> NodePort { to check all good }
@@ -142,9 +151,10 @@ And change the type from: ClusterIP >> NodePort { to check all good }
 
 Save file and close it.
 When you run below command, you will get address of ingress.
- - *kubectl get svc*
- - *kubectl get nodes -o wide*
-
+```bash
+kubectl get svc
+kubectl get nodes -o wide
+```
 <img width="1197" height="232" alt="Screenshot 2025-09-21 at 3 49 43 PM" src="https://github.com/user-attachments/assets/7246c77d-73e6-415f-ac1c-5ca68c00b52d" />
 
 So, everything is good, but if you try to access your file, you won’t be able to access as you need to update inboud & outbound rules for ec2:
@@ -155,23 +165,27 @@ Browser : externalipofcontainerruntime:portofsvc/courses
 <img width="1629" height="780" alt="Screenshot 2025-09-21 at 3 53 50 PM" src="https://github.com/user-attachments/assets/765898d5-cbc5-45c1-b7bc-7790daa06f60" />
 
 Now, let’s install NGINX ingress controller, for that run below command:
- - *kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.1/deploy/static/provider/aws/deploy.yaml*
-
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.1/deploy/static/provider/aws/deploy.yaml
+```
 <img width="1283" height="409" alt="Screenshot 2025-09-21 at 3 55 15 PM" src="https://github.com/user-attachments/assets/0359e8df-59cb-44c9-9663-6aeb3d014979" />
 
 Now run below command to get pods:
- - *kubectl get pods -n ingress-nginx*
-   
+```bash
+kubectl get pods -n ingress-nginx
+```
 <img width="903" height="125" alt="Screenshot 2025-09-21 at 3 55 42 PM" src="https://github.com/user-attachments/assets/a000c7a5-5604-4819-98e8-7dd0bd4f9888" />
 
 You can cross-check by open the file by below command:
- - *kubectl edit pods ingress-nginx-controller-f6dcd6c56-j4lhc -n ingress-nginx*
-
+```bash
+kubectl edit pods ingress-nginx-controller-f6dcd6c56-j4lhc -n ingress-nginx
+```
 <img width="1281" height="93" alt="Screenshot 2025-09-21 at 3 57 27 PM" src="https://github.com/user-attachments/assets/db46c2fd-d35f-4c4a-826e-e291ce5a9886" />
 
 Now run the below command and this time, your ingress will get address:
- - *kubectl get ing*
-   
+```bash
+kubectl get ing
+ ```  
 <img width="1283" height="80" alt="Screenshot 2025-09-21 at 3 57 45 PM" src="https://github.com/user-attachments/assets/2465304b-ca7a-4124-bfa6-f2bfd71f66be" />
 
 This is the same address, you can verify in loadbalancer in aws account.
@@ -197,18 +211,20 @@ Now if you try to access that website from below url , you can access web-app:
 <img width="1586" height="785" alt="Screenshot 2025-09-21 at 4 24 10 PM" src="https://github.com/user-attachments/assets/b174421e-d910-4e2a-9e31-d799e6398885" />
 
 4. Now if you want to deploy in multiple environments, you can use helm chart. For that purpose, first install helm chart in local system:
-   - *winget install Helm.Helm*
-
+ ```bash
+   winget install Helm.Helm
+```
 This will install helm command. Now run below command to create new directory name go-web-app-chart. You can find in repo.
-
- - *helm create go-web-app-chart*
-   
+```bash
+helm create go-web-app-chart
+```  
 <img width="1283" height="185" alt="Screenshot 2025-09-21 at 4 26 26 PM" src="https://github.com/user-attachments/assets/0525a7b6-3d06-4031-aa67-27b7465aeb89" />
 
 Go to that directory by below command and remove all unnecessary folders.
- - *cd go-web-app-chart*
- - *rm -rf Charts*
-
+```bash
+ cd go-web-app-chart
+ rm -rf Charts
+```
 <img width="976" height="113" alt="Screenshot 2025-09-21 at 4 29 37 PM" src="https://github.com/user-attachments/assets/0384a998-252f-4a4a-99d1-4e9edefc4a40" />
 
 Now copy all three deployment.yaml , service.yaml and ingress.yaml files into template folder and delete everthing which was there previously.
@@ -232,49 +248,54 @@ Now if you run below command, you will see your app, service, ingress.
  <img width="784" height="276" alt="Screenshot 2025-09-21 at 4 41 46 PM" src="https://github.com/user-attachments/assets/535855cf-17de-4f95-a6ff-0b167dcf6fdd" />
 
 5. So, let’s delete everything and deploy through helm chart.
-
-   - *kubectl delete deploy go-web-app*
-
+```bash
+kubectl delete deploy go-web-app
+```
 <img width="846" height="124" alt="Screenshot 2025-09-21 at 4 42 19 PM" src="https://github.com/user-attachments/assets/8d8ecfd6-33e2-43a2-8eba-bb6e15999bbe" />
 
 Run below command to delete service.
-
- - *kubectl delete svc go-web-app*
-
+```bash
+kubectl delete svc go-web-app
+```
 <img width="792" height="88" alt="Screenshot 2025-09-21 at 4 42 39 PM" src="https://github.com/user-attachments/assets/f60e9e38-7dc5-45b3-9f80-3aee45327345" />
 
 Run below command to delete ingress.
-
- - *kubectl delete ing go-web-app*
-   
+```bash
+kubectl delete ing go-web-app
+```   
 <img width="770" height="83" alt="Screenshot 2025-09-21 at 4 42 53 PM" src="https://github.com/user-attachments/assets/76cfabf9-7e33-448c-982d-a28d04b7c390" />
 
 Now after this, if you will run below command, you will see nothing.
- - *kubectl get all*
-
+```bash
+kubectl get all
+```
 <img width="690" height="85" alt="Screenshot 2025-09-21 at 4 43 12 PM" src="https://github.com/user-attachments/assets/1f9b2a90-4d3f-4bed-99e3-0008952d7440" />
 
 Now we will install these from heml chart using below command:
- - *helm install go-web-app ./go-web-app-chart*
-   
+```bash
+helm install go-web-app ./go-web-app-chart
+```
 <img width="977" height="160" alt="Screenshot 2025-09-21 at 4 44 05 PM" src="https://github.com/user-attachments/assets/3b0ae6b0-c61e-4cba-8a34-9fc0d5ea9fcb" />
 
 This will deploy my app, service and ingress. You can check by running below commands:
- - *kubectl get deployment*
- - *kubectl get svc*
- - *kubectl get ing*
-
+```bash
+kubectl get deployment
+kubectl get svc
+kubectl get ing
+```
 <img width="1218" height="224" alt="Screenshot 2025-09-21 at 4 44 49 PM" src="https://github.com/user-attachments/assets/1c51c14b-8847-4d49-8ced-a087151ce4bc" />
 
 You can cross check, by going to go-web-app file from below command:
- - *kubectl edit deploy go-web-app*
-
+```bash
+kubectl edit deploy go-web-app
+```
 <img width="454" height="160" alt="Screenshot 2025-09-21 at 4 45 51 PM" src="https://github.com/user-attachments/assets/b0a2c1af-ac35-4d0b-8b5b-b8d66f0133bd" />
 
 Now un-install everything and now we will create a proper CI-CD part of project so for uninstalling everything, run below command and verify.
- - *helm uninstall go-web-app*
- - *kubectl get all*
-   
+```bash
+helm uninstall go-web-app
+kubectl get all
+```
 <img width="843" height="119" alt="Screenshot 2025-09-21 at 4 46 39 PM" src="https://github.com/user-attachments/assets/410e2003-193d-4694-92ae-abb329463e36" />
 
 6. Now, first we will create CI part of our deployment on Github Action:
@@ -316,23 +337,27 @@ You can verify this here on Dockerhub.
 7. Now as CI part is done, so let’s start CD part with help of ArgoCD. As for ArgoCD , the only source of truth is github so that’s why we use github action for CI part.
 
 Run below command into your local terminal, to create namespace for argocd :
-
- - *kubectl create namespace argocd*
-
+```bash
+kubectl create namespace argocd
+```
 <img width="895" height="78" alt="Screenshot 2025-09-23 at 10 23 33 AM" src="https://github.com/user-attachments/assets/578daba3-3252-4471-9f63-743355b0b5ce" />
 
 Run this command for install argocd or create pod of argocd:
- - *kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml*
-
+```bash
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
 <img width="1243" height="222" alt="Screenshot 2025-09-23 at 10 24 11 AM" src="https://github.com/user-attachments/assets/c8d84eab-49dc-42cb-90bb-96b079304b32" />
 
 Run this command to edit service file of argocd and change ClusterIP to Loadbalanacer so it will take loadbalancer ip.
- - *kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"*
-   
+```bash
+kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"
+```   
 <img width="1236" height="79" alt="Screenshot 2025-09-23 at 10 24 58 AM" src="https://github.com/user-attachments/assets/50a7e557-f4eb-40ed-b283-760a421005b7" />
 
 Now run below command to get ip of argocd pod :
- - *kubectl get svc argocd-server -n argocd*
+```bash
+kubectl get svc argocd-server -n argocd
+```
 
 <img width="1239" height="135" alt="Screenshot 2025-09-23 at 10 25 26 AM" src="https://github.com/user-attachments/assets/fc0d08ef-6025-4a2f-8d41-d5135ee3cb82" />
 
@@ -341,18 +366,22 @@ Paste that ExternalIP inside your browser , and it will open argocd UI.
 <img width="1149" height="912" alt="Screenshot 2025-09-23 at 10 26 14 AM" src="https://github.com/user-attachments/assets/71fd1e32-ef85-4e28-8c6f-1ce9a93ed083" />
 
 So, as username is fixed as Admin, you need password, for that run below command :
- - *kubectl get secrets -n argocd*
+```bash
+kubectl get secrets -n argocd
+```
 
 <img width="916" height="136" alt="Screenshot 2025-09-23 at 10 26 38 AM" src="https://github.com/user-attachments/assets/148f7cf6-de40-4a30-aecd-40ceeed2e907" />
 
 Run below command for getting password :
- - *kubectl edit secrets argocd-initial-admin-secret -n argocd*
-
+```bash
+kubectl edit secrets argocd-initial-admin-secret -n argocd
+```
 <img width="1158" height="83" alt="Screenshot 2025-09-23 at 10 27 27 AM" src="https://github.com/user-attachments/assets/ab64e8c6-4244-49ef-b35f-f6a86e05f17a" />
 
 Copy the password and decrypt that code as it is in base64 format. For decode that, run below command :
- - *echo Ung4eFh1Nk05T1RRUUstYg== | base64 --decode*
-
+```bash
+echo Ung4eFh1Nk05T1RRUUstYg== | base64 --decode
+```
 <img width="928" height="342" alt="Screenshot 2025-09-23 at 11 25 55 AM" src="https://github.com/user-attachments/assets/31547692-acbb-4a0f-8164-2cf1dcb6db25" />
 
 <img width="1145" height="90" alt="Screenshot 2025-09-23 at 10 28 01 AM" src="https://github.com/user-attachments/assets/95f2f2b6-5c19-4692-863f-dd92fa3d2c97" />
@@ -379,9 +408,9 @@ In path section > select default cluster url and in Namespace , write default.
 <img width="873" height="269" alt="Screenshot 2025-09-23 at 10 31 12 AM" src="https://github.com/user-attachments/assets/61ec7688-e1ac-4417-bb87-378f47756294" />
 
 Before this, you can check that, there is no deployment and svc is running right now.
-
- - *kubectl get all*
-
+```bash
+kubectl get all
+```
 <img width="787" height="100" alt="Screenshot 2025-09-23 at 10 31 35 AM" src="https://github.com/user-attachments/assets/0414e5b1-99ba-4fe9-90d7-f8acba0901c1" />
 
 In HELM, select values.yaml file and then click on create.
@@ -399,8 +428,8 @@ That’s it. You have successfully devopsified a go language-based web-app.
 Now whenever you update your github repo, whole CI-CD will run on github action and argocd.
 
 For destroying all resources , run below command :
-
- - *eksctl delete cluster --name demo-cluster --region us-east-1*
-
+```bash
+eksctl delete cluster --name demo-cluster --region us-east-1
+```
 <img width="1237" height="191" alt="Screenshot 2025-09-23 at 10 35 26 AM" src="https://github.com/user-attachments/assets/f8d0faff-a23b-4cc7-9d19-0e1a5ea98970" />
 
